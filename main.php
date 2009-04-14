@@ -5,10 +5,10 @@ if (isset($_POST['submit_message'])) {
 	$name = $_POST['name'];
 	$content = $_POST['content'];
 	$email = $_POST['email'];
-	
+
 	$sql = "INSERT INTO message(name, content, email) VALUES ('$name', '$content', '$email')";
-	$result = mysql_query($sql);										  
-	
+	$result = mysql_query($sql);
+
 	if (!$result) {
 		echo "Could not successfully run query ($sql) from DB: " . mysql_error();
 		exit;
@@ -59,7 +59,7 @@ body {
 </head>
 
 <body>
-<?php 
+<?php
 if (mysql_num_rows($result) == 0) {
 	echo "No Message";
 	exit;
@@ -77,18 +77,18 @@ while ($row = mysql_fetch_assoc($result)) {
 	echo "<div class='content'><span class='name'>";
 	if (strlen($row["email"]) != 0) {
 		if (preg_match( "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $row["email"])) {
-			echo "<a href='mailto:".$row["email"]."'>".$row["name"]."</a>";
+			echo "<a href='mailto:".$row["email"]."'>".htmlentities($row["name"])."</a>";
 		} else {
             if (preg_match( "/^http:\/\/.+$/", $row["email"])) {
-			    echo "<a href='".$row["email"]."' target='blank'>".$row["name"]."</a>";
+			    echo "<a href='".$row["email"]."' target='blank'>".htmlentities($row["name"])."</a>";
             } else {
-                echo "<a href='http://".$row["email"]."' target='blank'>".$row["name"]."</a>";
+                echo "<a href='http://".$row["email"]."' target='blank'>".htmlentities($row["name"])."</a>";
             }
 		}
 	} else {
 		echo $row["name"];
 	}
-	echo '</span>: '.$row["content"]."</div>";
+	echo '</span>: '.htmlentities($row["content"])."</div>";
 	echo '</div>';
 }
 ?>

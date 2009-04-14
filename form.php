@@ -30,15 +30,15 @@ window.onload = function () {
 	var suitable_width = (window_width - 25)/2;
 	document.getElementById('name_field').style.width =  suitable_width + 'px';
 	document.getElementById('email_field').style.width = suitable_width + 'px';
-	
+
 	document.getElementById('content_field').style.width = (window_width - 5 - 40) + 'px';
 }
 
 function on_focus(e, default_msg) {
-	 var target = window.event ? window.event.srcElement : e.target;
-	 if (target.value == default_msg) {
-	 	target.value = "";
-	 }
+	var target = window.event ? window.event.srcElement : e.target;
+	if (target.value == default_msg) {
+		target.value = "";
+	}
 }
 
 function lose_focus(e, default_msg) {
@@ -52,9 +52,9 @@ function do_post() {
 	var name = document.getElementById('name_field');
 	var content = document.getElementById('content_field');
 	var email = document.getElementById('email_field');
-	
+
 	var is_valid = true;
-	
+
 	if (name.value == 'name') {
 		is_valid = false;
 		alert("Please enter a name");
@@ -62,7 +62,7 @@ function do_post() {
 		is_valid = false;
 		alert("Please enter a message");
 	}
-	
+
 	if (is_valid) {
 		if (email.value == 'email / url') {
 			email.value = ""
@@ -72,7 +72,7 @@ function do_post() {
 		content.value = "message";
 		email.value = "email / url";
 	}
-	
+
 	return false;
 }
 </script>
@@ -88,8 +88,8 @@ function do_post() {
             <td><input name="email" id="email_field"  type="text" value="email / url" size="1" onfocus="on_focus(event, 'email / url')" onblur="lose_focus(event, 'email / url')"  maxlength="100"/></td>
         </tr>
     </table>
-    
-   	<table width="100%" cellpadding="0" cellspacing="0">
+
+	<table width="100%" cellpadding="0" cellspacing="0">
         <tr>
             <td><input name="content" id="content_field" type="text" value="message" size="1" onfocus="on_focus(event, 'message')" onblur="lose_focus(event, 'message')"  maxlength="300"/></td>
             <td width="5px"></td>
