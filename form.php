@@ -91,7 +91,7 @@ function do_post() {
 
 	<table width="100%" cellpadding="0" cellspacing="0">
         <tr>
-            <td><input name="content" id="content_field" type="text" value="message" size="1" onfocus="on_focus(event, 'message')" onblur="lose_focus(event, 'message')"  maxlength="300"/></td>
+            <td><input name="content" id="content_field" type="text" value="message" size="1" onfocus="on_focus(event, 'message')" onblur="lose_focus(event, 'message')" /></td>
             <td width="5px"></td>
             <td><input width="40px" type="submit" value="Go" /></td>
         </tr>

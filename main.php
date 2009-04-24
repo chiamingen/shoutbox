@@ -77,18 +77,18 @@ while ($row = mysql_fetch_assoc($result)) {
 	echo "<div class='content'><span class='name'>";
 	if (strlen($row["email"]) != 0) {
 		if (preg_match( "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $row["email"])) {
-			echo "<a href='mailto:".$row["email"]."'>".htmlentities($row["name"])."</a>";
+			echo "<a href='mailto:".$row["email"]."'>".htmlentities($row["name"], null, 'UTF-8')."</a>";
 		} else {
             if (preg_match( "/^http:\/\/.+$/", $row["email"])) {
-			    echo "<a href='".$row["email"]."' target='blank'>".htmlentities($row["name"])."</a>";
+			    echo "<a href='".$row["email"]."' target='blank'>".htmlentities($row["name"], null, 'UTF-8')."</a>";
             } else {
-                echo "<a href='http://".$row["email"]."' target='blank'>".htmlentities($row["name"])."</a>";
+                echo "<a href='http://".$row["email"]."' target='blank'>".htmlentities($row["name"], null, 'UTF-8')."</a>";
             }
 		}
 	} else {
 		echo $row["name"];
 	}
-	echo '</span>: '.htmlentities($row["content"])."</div>";
+	echo '</span>: '.htmlentities($row["content"], null, 'UTF-8')."</div>";
 	echo '</div>';
 }
 ?>
